@@ -1,0 +1,95 @@
+*{
+    
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color:#d90368;
+    background-color: #091936;
+}
+
+/* Barra de Navegación --------------------------------------------------*/
+.bg-light {
+    background-color: transparent!important;
+}
+.me-auto {
+    margin-right: 0;
+}
+
+.navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+/* navegación-lateral--------------------------------------------------- */
+.nav-lat{
+    background-color: #6ddaf3 !important;
+    height: 35vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.navegación-lat{
+    background-color: #6ddaf3 !important;
+}
+
+i{
+    color: #d90368;
+    z-index: 1;
+}
+/* Barra de búsqueda ----------------------------------------------------*/
+.búsqueda{
+padding: 70px;
+
+}
+
+.category{
+    display: inline-flex;
+    
+
+}
+.form-check {
+    display: inline-block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: 0.125rem;
+    padding-right:26px;
+}
+
+.form-control {
+    display: inline-block;
+    width: 15vw;
+    padding: 0.375rem 0.75rem;
+    height: 28px;
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #6ddaf3;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-outline-success {
+    color: #6ddaf3;
+    border-color: #6ddaf3;
+    height: 28px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.btn-outline-success:hover{
+    background-color: #d90368;
+    border-color: #d90368;
+}
+/* Cards ----------------------------------------------------------------*/
+/* Footer ---------------------------------------------------------------*/
