@@ -15,7 +15,7 @@
 }
 
 .bg-light {
-    background-color: #091936!important;
+    background-color: #080e2e!important;
 }
 .me-auto {
     margin-right: 0;
@@ -33,7 +33,7 @@
 
 
 .nav-lat {
-    background-color: #6ddaf3 !important;
+    background-color: rgb(217 3 103 / 75%) ;
     height: 35vh;
     display: flex;
     flex-wrap: wrap;
@@ -43,15 +43,19 @@
     align-items: center;
 }
 .navegación-lat{
-    background-color: #6ddaf3 !important;
+    background-color: rgb(217 3 103 / 75%) ;
 }
 
 .der{
     text-align: left;
     padding-left: 25px;
+    
 }
+
+
 .tit{
     text-align: center;
+    color: white;
 }
 .izq{
     padding-right: 25px;
@@ -63,7 +67,9 @@
 /* Barra de búsqueda ----------------------------------------------------*/
 .búsqueda{
 padding: 70px;
-
+width: 100vw;
+display: flex ;
+flex-wrap: wrap;
 }
 
 .category{
@@ -112,9 +118,11 @@ padding: 70px;
     border-color: #d90368;
 }
 /* Cards ----------------------------------------------------------------*/
+
 .cards{
     justify-content: space-evenly;
     padding-bottom: 55px;
+    width: 100vw;
 }
 .card {
     position: relative;
@@ -122,12 +130,18 @@ padding: 70px;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fffffff3;
+    background-color: #f6f3f3d0;
     background-clip: border-box;
-    border: 1px solid #d90368;
+    border: 1px solid #f6f3f3d0;
     border-radius: 0.25rem;
+    box-shadow: 0 0 20px #11dbf9fa;
 }
 
+.btn-primary{
+    background-color: #d90368;
+    border-color: #d90368;
+    border-radius: 27px;
+}
 .card-body{
     text-align: center;
 
@@ -139,10 +153,42 @@ min-height: 25px;
 
 .búsqueda-cards{
     background-image: url(/assets/img/fondo.png);
-    width: 100%;
+    width: 100vw;
     z-index: -1;
-    object-fit: cover;    
+    object-fit: cover; 
+    background-position: center;   
+    background-repeat: no-repeat;
+    background-size: cover;
     /* filter: brightness(70%); */
     min-height: 87vh;
+
 }
 /* Footer ---------------------------------------------------------------*/
+footer{
+    text-align: center;
+    background-color:#b00555;
+    padding: 4px 23px 28px;
+    display:flex;
+    justify-content: space-between;
+    /* align-content: center; */
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+
+}
+#foot-legend{
+    color: rgba(255, 255, 255, 0.882) !important;
+}
+
+.logos{
+    padding-left: 25px;
+}
+.legend{
+    padding-right: 20px;
+}
+.fa-brands, .fab {
+    font-weight: 400;
+    color:white;
+    padding: 5px;   
+}
+/* {} */
