@@ -170,6 +170,12 @@ min-height: 25px;
     min-height: 87vh;
 
 }
+
+.precio{
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
 /* Footer ---------------------------------------------------------------*/
 footer{
     text-align: center;
@@ -234,7 +240,7 @@ footer{
 
     .col-md-6 {
         flex: 0 0 auto;
-        width: 40%;
+        width: 48%;
     }
 
 }
