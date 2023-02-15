@@ -285,6 +285,7 @@ td{
     flex-direction: column;
     align-items: center;
     padding: 50px 0px;
+    
 }
 
 .mb-3{
@@ -293,7 +294,8 @@ td{
 }
 .form-control {
     display: inline-block;
-    width: 23vw;
+    min-width: 172px;
+    width: 30vw;
 }    
 .input-group>.form-control, .input-group>.form-select {
     position: relative;
@@ -301,4 +303,7 @@ td{
     width: auto;    
    
 }
+.bot-envio{
+    text-align: right;
+} 
   
