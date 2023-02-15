@@ -183,17 +183,19 @@ min-height: 25px;
 footer{
     text-align: center;
     background-color:#b00555;
-    padding: 4px 23px 28px;
+    padding: 28px 23px ;
     display:flex;
     justify-content: space-between;
     /* align-content: center; */
     align-items: center;
     flex-wrap: wrap;
     width: 100vw;
+    vertical-align: middle;
 
 }
 #foot-legend{
     color: rgba(255, 255, 255, 0.882) !important;
+    margin-bottom: 0;
 }
 
 .logos{
