@@ -4,9 +4,168 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/62fc15ca55.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/styles/style.css">
     <title>Amazing Events-Upcoming Events</title>
 </head>
 <body>
+    <div class="barra-nav">
+        <nav></nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/assets/img/LogoAmazingEvents.png" alt="" width="60" >
+                </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-1 mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link"  href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Upcoming Events</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="past-events.html">Past Event</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="stats.html">Stats</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contac</a>
+                  </li>
+
+                  
+                </ul>
+
+              </div>
+            </div>
+          </nav>
+
+    </div>
+
+
+
+
     
+    <main>
+        <div class="búsqueda-cards">
+            <div class="nav-lat">
+                <nav class="der col-4 "><a href="index.html"><img  src="/assets/img/f-izquierda.png" alt=" flecha hacia la izquierda" style="height: 20px;"></a></nav>
+                <h1 class="tit col-4 " >Upcoming Events</h1>
+                <nav class="izq col-4"><a href="past-events.html"><img  src="/assets/img/f-derecha.png" alt=" flecha hacia la derecha" style="height: 20px;"></a></nav>
+                
+            </div>
+            <div class="row búsqueda">
+
+                <div class="category col-md-8 col-lg-8">
+           
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Category
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" >
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Category
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" >
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Category
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" >
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Category
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" >
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Category
+                        </label>
+                    </div>
+                </div>
+                <form class="d-flex col-md-4 col-lg-4">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div class="row cards">
+
+                <div class="card col-sm-6 col-md-4 " >
+                    <img src="/assets/img/Cinema.jpg" class="card-img-top" alt="cinema">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>   
+                        <div class="row card-row">
+                            <div class="precio col-md-6 col-sm-12"> <h6>$XXXXX</h6></div>
+                            <div class="botón col-md-6 col-sm-12"><a href="#" class="btn btn-primary">Details</a></div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="card  col-sm-6 col-md-4" >
+                    <img src="/assets/img/Museum_Tour.jpg" class="card-img-top" alt="museum tour">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="row card-row">
+                            <div class="precio col-md-6 col-sm-12"> <h6>$XXXXX</h6></div>
+                            <div class="botón col-md-6 col-sm-12"><a href="#" class="btn btn-primary">Details</a></div>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="card col-sm-6 col-md-4 " >
+                    <img src="/assets/img/Music_Concert.jpg" class="card-img-top" alt="music concert">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="row card-row">
+                            <div class="precio col-md-6 col-sm-12"> <h6>$XXXXX</h6></div>
+                            <div class="botón col-md-6 col-sm-12"><a href="#" class="btn btn-primary">Details</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card col-sm-6 col-md-4 " >
+                    <img src="/assets/img/Costume_Party.jpg" class="card-img-top" alt="costume party">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="row card-row">
+                            <div class="precio col-sm-12 col-md-6 "> <h6>$XXXXX</h6></div>
+                            <div class="botón  col-sm-12 col-md-6 "><a href="#" class="btn btn-primary">Details</a></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer></footer>
+    </main>
+    <footer>
+        <div class="logos"><i class="fa-brands light fa-instagram"></i>      
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <div class="legend"><h6 id="foot-legend">Made with 💗 by Laura Bautista</h6>
+        </div>
+
+        
+    </footer>
+
+    <script src="https://kit.fontawesome.com/62fc15ca55.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

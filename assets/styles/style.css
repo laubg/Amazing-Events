@@ -121,6 +121,9 @@
     background-color: #d90368;
     border-color: #d90368;
 }
+.fa-solid:hover{
+    color: white;
+}
 /* Cards ----------------------------------------------------------------*/
 
 .cards{
