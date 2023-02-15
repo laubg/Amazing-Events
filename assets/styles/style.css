@@ -255,6 +255,16 @@ footer{
     }
 
 }
+@media (min-width: 1452px){
+
+    .col-9 {
+        width: 60%;
+    }
+    p,h5{
+        font-size: 20px;
+    }
+
+}
 
 /* Tabla---------------------------------- */
 
@@ -306,4 +316,24 @@ td{
 .bot-envio{
     text-align: right;
 } 
-  
+
+/* Details  ----------------------------------------------------------*/
+.col-9{
+    display: flex;
+    flex-direction: row;
+}
+.datos{
+    display: flex;
+    align-items: center;
+}
+.derecha{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-buy{
+    padding: 6px 38px;
+}
+.card-title {
+    margin: 0.7rem 0;
+}
