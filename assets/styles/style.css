@@ -250,4 +250,22 @@ footer{
 
 /* Tabla---------------------------------- */
 
-table{}
+table{
+    background-color: #f6f3f31a;
+    color: white !important;
+    width: 75% !important;
+    vertical-align: middle;
+    text-align:left;
+}
+
+.tabla{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 45px;
+}
+th{
+    background-color: #f6f3f3f0 !important;
+} 
+td{
+    color:#6ddaf3 !important;
+}
