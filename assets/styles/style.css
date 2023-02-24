@@ -27,6 +27,7 @@
     align-content: flex-start;
     flex-wrap: nowrap;
     justify-content: flex-end;
+    /* display: flex; */
 }
 
 /* navegación-lateral--------------------------------------------------- */
