@@ -1,11 +1,11 @@
 const contenedorCards= document.querySelector('.cards')
-// / console.log(data.currentDate);/
+
 
 let newCards = crearCards(data.events)
 
 contenedorCards.innerHTML = newCards
 
-// console.log(fechaactual);
+
 
 function crearCards(arrayEventos){
     let tarjetas =""
