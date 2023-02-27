@@ -25,7 +25,7 @@ h6{
 
 .navbar-expand-lg .navbar-collapse {
    
-    flex-basis: auto;
+    /* flex-basis: none;  esto cambiaba el toggle, lo ponía encimado con el menú*/
     align-content: flex-start;
     flex-wrap: nowrap;
     justify-content: flex-end;
@@ -130,6 +130,9 @@ h6{
 }
 /* Cards ----------------------------------------------------------------*/
 
+.row{
+    align-items: center;
+}
 .cards{
     justify-content: space-evenly;
     padding-bottom: 55px;

@@ -1,34 +1,23 @@
-// const contenedorTarjetas = document.querySelector('')
-// let tarjetasGeneradas = crearTarjetas(personas)
-// contenedorTarjetas.innerHTML =tarjetasGeneradas
-
-// function crearTarjetas(arrayDatos){
-//    let tarjetas = ''
-   
-//    for (const persona of arrayDatos){
-//    tarjetas+= '<div class="card text-black" style="width"
-//            <img src="https://images.hola.com/imagenes/mascotas"
-//                <div class="card-body"
-//                <h5 class="card-title">${persona.name}</h5>'(....)
-//    }return tarjetas
-// }
-
 const contenedorCards= document.querySelector('.cards')
-console.log(data.events);
+// / console.log(data.currentDate);/
 
 let newCards = crearCards(data.events)
 
 contenedorCards.innerHTML = newCards
 
+// console.log(fechaactual);
 
 function crearCards(arrayEventos){
     let tarjetas =""
+    let fechaactual= data.currentDate
 
-    for (const tarjeta of arrayEventos) {      
-    
-    tarjetas += `<div class="card col-sm-6 col-md-4 " >        
-                    <img src= ${tarjeta.image}  class="card-img-top" alt="cinema" >    
-                    <div class="card-body style="heigth:auto"">  
+
+    for (const tarjeta of arrayEventos) {  
+        
+        if (tarjeta.date>fechaactual) {
+            tarjetas += `<div class="card col-sm-6 col-md-4 " >        
+                    <img src= ${tarjeta.image}  class="card-img-top" alt="cinema">    
+                    <div class="card-body">  
                         <h5 class="card-title">${tarjeta.name}</h5>
                         <p class="card-text">${tarjeta.description}</p>                         
                         <div class="row card-row">                               
@@ -37,6 +26,10 @@ function crearCards(arrayEventos){
                         </div>                   
                     </div>                    
                 </div>               `   } 
-                return tarjetas
+            
+       
+    
+    
+                 }return tarjetas
+         
 }
-// ``

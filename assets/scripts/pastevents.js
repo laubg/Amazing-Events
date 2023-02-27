@@ -1,17 +1,20 @@
 const contenedorCards= document.querySelector('.cards')
-console.log(data.currentDate);
+// / console.log(data.currentDate);/
 
 let newCards = crearCards(data.events)
 
 contenedorCards.innerHTML = newCards
 
+// console.log(fechaactual);
 
-function crearCards(arrayDatos){
+function crearCards(arrayEventos){
     let tarjetas =""
+    let fechaactual= data.currentDate
 
-    for (const tarjeta of arrayDatos) {  
+
+    for (const tarjeta of arrayEventos) {  
         
-        if (tarjeta.date<data.currentDate) {
+        if (tarjeta.date<fechaactual) {
             tarjetas += `<div class="card col-sm-6 col-md-4 " >        
                     <img src= ${tarjeta.image}  class="card-img-top" alt="cinema">    
                     <div class="card-body">  
@@ -27,6 +30,7 @@ function crearCards(arrayDatos){
        
     
     
-                return tarjetas }
+                 }return tarjetas
+         
 }
 // ``
