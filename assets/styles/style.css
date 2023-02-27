@@ -7,7 +7,9 @@
     color:#d90368;
     
 }
-
+h6{
+    color:#071774;
+}
 
 /* Barra de Navegación --------------------------------------------------*/
 .barra-nav{
@@ -138,6 +140,7 @@
 .card {
     position: relative;
     display: flex;
+    height: auto;
     flex-direction: column;
     min-width: 200px;
     word-wrap: break-word;
@@ -254,7 +257,8 @@ footer{
         font-size: 1rem;
     }
     h6{
-        font-size: 0.7rem;
+        font-size: 1.1rem;
+        color:#071774;
     }
     footer{
         flex-direction: column;
@@ -265,9 +269,11 @@ footer{
     .col-9 {
         width: 100%;
     }
-    
-
+    .precio {
+        justify-content: center;  
+    }
 }
+
 @media (min-width: 576px){
 
     .col-sm-6 {
@@ -285,6 +291,9 @@ footer{
         flex: 0 0 auto;
         /* width: 20%; */
     }
+    .precio {
+        justify-content: center;
+    }
 
 
 }
@@ -297,6 +306,11 @@ footer{
         flex: 0 0 auto;
         width: 45%;
     }
+    h6{
+        font-size: 1.3rem;
+       
+    }
+    
 
 }
 @media (min-width: 906px){
