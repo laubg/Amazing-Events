@@ -253,6 +253,9 @@ footer{
         margin: 10px;
         width: 80vw;
     }
+    .legend>h6{
+        font-size: 0.5rem !important;    
+    }
 
 }
 @media (max-width: 506px){
@@ -260,15 +263,24 @@ footer{
         font-size: 1rem;
     }
     h6{
-        font-size: 1.1rem;
+        font-size: 1rem;
         color:#071774;
     }
     footer{
         flex-direction: column;
+        line-height: 4;
     }
     .logos {
         padding-left: 0px;
     }
+    /* .legend>h6{
+        font-size: 0.5rem; 
+        
+    } */
+    .legend{
+        padding-right: 0;
+    }
+
     .col-9 {
         width: 100%;
     }
@@ -309,10 +321,10 @@ footer{
         flex: 0 0 auto;
         width: 45%;
     }
-    h6{
+    /* h6{
         font-size: 1.3rem;
        
-    }
+    } */
     
 
 }
