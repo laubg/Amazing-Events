@@ -63,8 +63,8 @@ function crearCards(arrayEventos){
             </div>                   
         </div>                    
     </div>               `
-    }  
-    );
+    });
+    
     return tarjetas
 }    
 
