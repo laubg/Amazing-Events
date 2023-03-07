@@ -1,0 +1,119 @@
+.búsqueda{
+    padding: 70px;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    margin-left: 0;
+
+    
+}
+
+.búsqueda>.card{
+    padding: 7px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    height: auto;
+    flex-direction: row;
+    min-width: 200px;
+    word-wrap: break-word;
+    background-color: #f6f3f3d0;
+    background-clip: border-box;
+    border: 1px solid #f6f3f3d0;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 20px #11dbf9fa;
+    padding: auto;
+    align-items: center;
+    width: 80%;
+    
+}
+
+/* Responsive -----------------------------------------------------*/
+@media (max-width: 2900px){
+
+    .row{
+        justify-content: center;
+    }
+    .h5{
+    font-size: 0.7rem !important;
+    }
+    .card-text{
+        font-size: 30px !important;
+    }
+    .datos2 {
+    justify-content: center;
+    padding: 10px 0px;
+    }
+    .card-row{
+        padding: 8px 0px;
+    }
+}
+@media (max-width: 1946px){
+
+    .card-text{
+        font-size: 25px !important;
+    }
+
+}
+@media (max-width: 1514px){
+
+    .card-text{
+        font-size: 20px !important;
+    }
+
+}
+@media (max-width: 1309px){
+    .card {
+        flex-direction: column;
+    }
+    .col-5,.col-4{
+        width: 70%;
+    }
+    .card-text{
+        font-size: 20px !important;
+    }
+    h5{
+    font-size: 0.9rem ;
+    }
+}
+@media (max-width: 650px){
+    .card {
+        flex-direction: column;
+    }
+    .col-5,.col-4{
+        width: 70%;
+    }
+    .card-title {
+        font-size: 1.4rem !important;
+    }
+    .card-text{
+        font-size: 17px !important;
+    }
+    h5{
+    font-size: 0.9rem ;
+    }
+}
+
+@media (max-width: 468px){
+    .card {
+        flex-direction: column;
+    }
+    .col-5,.col-4{
+        width: 95%;
+    }
+    .card-title {
+        font-size: 1.4rem !important;
+    }
+    .card-text{
+        font-size: 17px !important;
+    }
+    h5{
+    font-size: 0.9rem ;
+    }
+}
+
