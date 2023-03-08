@@ -28,7 +28,7 @@ templateHtml = `<section class="card col-10">
                         </div> 
                         <div class="row card-row">
                             <div class="datos col-md-6 col-sm-12"> <h5>Capacity: ${evento.capacity}</h5></div>
-                            <div class="derecha col-md-6 col-sm-12"><h5>Assistance: ${evento.assistance}</h5></div>
+                            <div class="derecha col-md-6 col-sm-12"><h5>${evento.estimate == undefined ? ("Assistance: "+ evento.assistance) : ("Estimate: "+ evento.estimate) }</h5></div>
                         </div>
                         <div class="row card-row">
                             <div class="datos2 col-md-6 col-sm-12"> <h6>Price: $${evento.price}</h6></div>

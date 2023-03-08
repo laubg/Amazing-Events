@@ -22,7 +22,7 @@ function crearCards(arrayEventos){
                         <p class="card-text">${evento.description}</p>                         
                         <div class="row card-row">                               
                             <div class="precio col-md-6 col-sm-12"> <h6>   $${evento.price}</h6></div>                                
-                            <div class="botón col-md-6 col-sm-12"><a href="details.html" class="btn btn-primary">Details</a></div>                        
+                            <div class="botón col-md-6 col-sm-12"><a href="/details.html?id=${evento._id}" class="btn btn-primary">Details</a></div>                        
                         </div>                   
                     </div>                    
                 </div>               `   }   
