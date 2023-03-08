@@ -16,7 +16,14 @@
 const contenedorCards= document.querySelector('.cards')
 console.log(data.events);
 
+// Buscador--------------------------------------------------------
+let buscador= document.querySelector(".form-control")
+console.log(buscador);
 
+let form= document.querySelector(".formb")
+
+console.log(form);
+// buscador.addEventListener("change", ()=>{ console.log("Ocurrió un cambio en el buscador");})
 
 
 
@@ -42,6 +49,24 @@ console.log(data.events);
 //                 return tarjetas
 
 // }
+
+// function filtrarEventos(arrayEventos){
+    buscador.addEventListener("change", ()=>{ 
+        let eventosFiltrados = data.events.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+        console.log(buscador.value);
+        console.log(eventosFiltrados);
+
+        crearCards(eventosFiltrados);
+        console.log(crearCards(eventosFiltrados));
+        contenedorCards.innerHTML = crearCards(eventosFiltrados);
+
+
+    })
+
+
+     form.addEventListener("submit", (event)=>{event.preventDefault()})
+// filtrarEventos(data.events)
+
 let newCards = crearCards(data.events)
                
 contenedorCards.innerHTML = newCards
@@ -49,7 +74,6 @@ contenedorCards.innerHTML = newCards
 function crearCards(arrayEventos){
     let tarjetas =""
     
-
     arrayEventos.forEach(evento => {
         
         tarjetas += `<div class="card col-sm-6 col-md-4 " >        
@@ -66,7 +90,12 @@ function crearCards(arrayEventos){
     });
     
     return tarjetas
+
+    
 }    
+
+
+
 
 
 // URL parameter---------------------------------------
