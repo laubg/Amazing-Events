@@ -1,11 +1,45 @@
 const contenedorCards= document.querySelector('.cards')
 // / console.log(data.currentDate);/
 
+const evento= data.events;
+
+
+
+
+// Buscador----------------------------------------------------------------------
+let buscador= document.querySelector(".form-control")
+// console.log(buscador);
+
+let form= document.querySelector(".formb")
+
+
+
+console.log(form);
+
+
+// function filtrarEventos(arrayEventos){
+    buscador.addEventListener("change", ()=>{ 
+        let eventosFiltrados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+        console.log(buscador.value);
+        console.log(eventosFiltrados);
+
+        crearCards(eventosFiltrados);
+        console.log(crearCards(eventosFiltrados));
+        contenedorCards.innerHTML = crearCards(eventosFiltrados);
+
+
+    })
+
+
+     form.addEventListener("submit", (event)=>{event.preventDefault()})
+
+
+// Creación de Cards---------------------
 let newCards = crearCards(data.events)
 
 contenedorCards.innerHTML = newCards
 
-// console.log(fechaactual);
+
 
 function crearCards(arrayEventos){
     let tarjetas =""
@@ -29,6 +63,5 @@ function crearCards(arrayEventos){
     });
     
     return tarjetas
-         
+    
 }
-// ``

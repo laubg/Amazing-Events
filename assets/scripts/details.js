@@ -42,6 +42,7 @@ console.log(templateHtml);
 
 document.querySelector(".imprimir").innerHTML= templateHtml;
 
+// OTRA FORMA--------------------------------------------------
 //     function mostrarEvento(container,evento){
 //         container.innerHTML=`   <div class="card col-9 " style="background-color: "black"" >
 //         <img src="${evento.img}">
