@@ -1,7 +1,7 @@
 /* Obtenenos los datos de los parametros de la URL */
-let params = new URLSearchParams(document.location.search)
-let id = params.get("id")
-console.log(params);
+let parametros = new URLSearchParams(document.location.search)
+let id = parametros.get("id")
+console.log(parametros);
 console.log(id);
 
 
