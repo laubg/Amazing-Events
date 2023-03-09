@@ -7,14 +7,16 @@
     color:#d90368;
     
 }
+
+
 h6{
     color:#071774;
 }
 
 /* Barra de Navegación --------------------------------------------------*/
-.barra-nav{
+/* .barra-nav{
     width: 100vw;
-}
+} */
 
 .bg-light {
     background-color: #080e2e!important;
@@ -187,7 +189,7 @@ min-height: 25px;
 
 .búsqueda-cards{
     background-image: url(/assets/img/fondo.png);
-    width: 100vw;
+    /* width: 100vw; */
     z-index: -1;
     object-fit: cover; 
     background-position: center;   
@@ -213,7 +215,7 @@ footer{
     /* align-content: center; */
     align-items: center;
     flex-wrap: wrap;
-    width: 100vw;
+    /* width: 100vw; */
     vertical-align: middle;
 
 }
