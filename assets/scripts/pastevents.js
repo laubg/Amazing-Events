@@ -35,7 +35,7 @@ console.log(form);
 
 
 // Creación de Cards---------------------
-let newCards = crearCards(data.events)
+let newCards = crearCards(evento)
 
 contenedorCards.innerHTML = newCards
 
