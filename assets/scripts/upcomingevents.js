@@ -1,7 +1,41 @@
 const contenedorCards= document.querySelector('.cards')
+// / console.log(data.currentDate);/
+
+const evento= data.events;
 
 
-let newCards = crearCards(data.events)
+
+
+// Buscador----------------------------------------------------------------------
+let buscador= document.querySelector(".form-control")
+// console.log(buscador);
+
+let form= document.querySelector(".formb")
+
+
+
+console.log(form);
+
+
+// function filtrarEventos(arrayEventos){
+    buscador.addEventListener("change", ()=>{ 
+        let eventosFiltrados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+        console.log(buscador.value);
+        console.log(eventosFiltrados);
+
+        crearCards(eventosFiltrados);
+        console.log(crearCards(eventosFiltrados));
+        contenedorCards.innerHTML = crearCards(eventosFiltrados);
+
+
+    })
+
+
+     form.addEventListener("submit", (event)=>{event.preventDefault()})
+
+
+// Creación de Cards---------------------
+let newCards = crearCards(evento)
 
 contenedorCards.innerHTML = newCards
 
