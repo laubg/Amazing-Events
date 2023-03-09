@@ -1,4 +1,4 @@
-const contenedorCards= document.querySelector('.cards')
+const contenedorTarjetas= document.querySelector('.cards')
 
 const evento= data.events;
 // console.log(evento);
@@ -32,11 +32,11 @@ console.log(seleccionados)
 let buscador= document.querySelector(".form-control")
 // console.log(buscador);
 
-let form= document.querySelector(".formb")
+let formulario= document.querySelector(".formb")
 
 
 
-console.log(form);
+console.log(formulario);
 
 
 // function filtrarEventos(arrayEventos){
@@ -45,25 +45,25 @@ console.log(form);
         console.log(buscador.value);
         console.log(eventosFiltrados);
 
-        crearCards(eventosFiltrados);
-        console.log(crearCards(eventosFiltrados));
-        contenedorCards.innerHTML = crearCards(eventosFiltrados);
+        crearTarjetas(eventosFiltrados);
+        console.log(crearTarjetas(eventosFiltrados));
+        contenedorTarjetas.innerHTML = crearTarjetas(eventosFiltrados);
 
 
     })
 
 
-     form.addEventListener("submit", (event)=>{event.preventDefault()})
+     formulario.addEventListener("submit", (event)=>{event.preventDefault()})
 
 // filtrarEventos(evento)
 
-// Creación de cards----------------------------------------------------------------
+// Creación de tarjetas----------------------------------------------------------------
 
-let newCards = crearCards(evento)
+let nuevasTarjetas = crearTarjetas(evento)
                
-contenedorCards.innerHTML = newCards
+contenedorTarjetas.innerHTML = nuevasTarjetas
    
-function crearCards(arrayEventos){
+function crearTarjetas(arrayEventos){
     let tarjetas =""
     
     arrayEventos.forEach(evento => {
