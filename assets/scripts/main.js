@@ -1,61 +1,11 @@
 const contenedorTarjetas= document.querySelector('.cards')
 
 const evento= data.events;
+
+let eventosFiltrados=[]
 // console.log(evento);
 // console.log(data.events);
 // let arrayModificado= 
-
-// Checkboxes------------------------------------------------------
-let categorias = document.querySelectorAll('input[type=checkbox]')
-
-let seleccionados = []
-
-for (let categoria of categorias ) {
-   categoria.addEventListener( "click", (event) =>{
-       if(event.target.checked){
-            // seleccionados+=data.events.filter((event) => data.events.category==event.target.getAttribbute("value"))
-            seleccionados.push(event.target.value)
-            console.log(event.target.value);
-       }
-   })
-   
-}
-console.log(seleccionados)
-// Estructura filter--------------------------------------
-// const evenNumbers = numbers.filter(number =>number%2=0)
-// console.log(evenNumbers)
-// Estructura forEach--------------------------------------
-// const numbers= [1,2,3,4,5,6,7,8,9]
-// numbers.forEach(number=>console.log(number))
-
-// Buscador--------------------------------------------------------
-let buscador= document.querySelector(".form-control")
-// console.log(buscador);
-
-let formulario= document.querySelector(".formb")
-
-
-
-console.log(formulario);
-
-
-// function filtrarEventos(arrayEventos){
-    buscador.addEventListener("change", ()=>{ 
-        let eventosFiltrados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
-        console.log(buscador.value);
-        console.log(eventosFiltrados);
-
-        crearTarjetas(eventosFiltrados);
-        console.log(crearTarjetas(eventosFiltrados));
-        contenedorTarjetas.innerHTML = crearTarjetas(eventosFiltrados);
-
-
-    })
-
-
-     formulario.addEventListener("submit", (event)=>{event.preventDefault()})
-
-// filtrarEventos(evento)
 
 // Creación de tarjetas----------------------------------------------------------------
 
@@ -85,6 +35,88 @@ function crearTarjetas(arrayEventos){
 
     
 }    
+
+// Buscador--------------------------------------------------------
+let buscador= document.querySelector(".form-control")
+// console.log(buscador);
+
+let formulario= document.querySelector(".formb")
+
+
+
+console.log(formulario);
+
+
+// function filtrarEventos(arrayEventos){
+    buscador.addEventListener("change", ()=>{ 
+        let eventosFiltrados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+        // console.log(buscador.value);
+        // console.log(eventosFiltrados);
+
+        crearTarjetas(eventosFiltrados);
+        // console.log(crearTarjetas(eventosFiltrados));
+        contenedorTarjetas.innerHTML = crearTarjetas(eventosFiltrados);
+
+
+    })
+
+
+     formulario.addEventListener("submit", (event)=>{event.preventDefault()})
+
+// filtrarEventos(evento)
+// Checkboxes------------------------------------------------------
+let categorias = document.querySelectorAll('input[type=checkbox]')
+console.log(categorias);
+
+let seleccionados = []
+
+for (let categoria of categorias ) {
+   categoria.addEventListener( "click", (event) =>{
+       if(event.target.checked){
+            // seleccionados+=data.events.filter((event) => data.events.category.includes(event.target.value)
+            evento.forEach(evento=>evento.category==event.target.value?(seleccionados.push(evento)):(console.log("no funciona")))
+            //(eventosFiltrados.find(evento=>evento.category==event.target.value))
+            console.log(seleccionados);
+            crearTarjetas(seleccionados);
+            console.log(crearTarjetas(seleccionados));
+            contenedorTarjetas.innerHTML = crearTarjetas(seleccionados);  
+            console.log(categorias);      
+            
+       }else{
+        contenedorTarjetas.innerHTML =""
+        console.log(categorias);
+        seleccionados= []
+        categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
+    }
+       
+   })
+   
+}
+
+// for (let evento of eventosFiltrados) {
+
+//     if (evento.category==seleccionados.c) {
+//         p
+//     }
+    
+// }
+
+
+console.log(seleccionados)
+// Estructura filter--------------------------------------
+// const evenNumbers = numbers.filter(number =>number%2=0)
+// console.log(evenNumbers)
+// Estructura forEach--------------------------------------
+// const numbers= [1,2,3,4,5,6,7,8,9]
+// numbers.forEach(number=>console.log(number))
+
+
+//datafilter.push(dataFilterAux.filter((event)=>event.category.includes(categoria)));
+
+//evento.estimate == undefined ? ("Assistance: "+ evento.assistance) : ("Estimate: "+ evento.estimate)
+
+
+
 
 // const contenedorTarjetas = document.querySelector('')
 // let tarjetasGeneradas = crearTarjetas(personas)
