@@ -85,8 +85,10 @@ for (let categoria of categorias ) {
        }else{
         contenedorTarjetas.innerHTML =""
         console.log(categorias);
+        // seleccionados.delete(evento)
         seleccionados= []
-        categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
+        // categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
+        // crearTarjetas(evento)
     }
        
    })
