@@ -2,7 +2,9 @@ const contenedorTarjetas= document.querySelector('.cards')
 
 const evento= data.events;
 
-let eventosFiltrados=[]
+let eventosBuscados=[]
+
+
 // console.log(evento);
 // console.log(data.events);
 // let arrayModificado= 
@@ -36,75 +38,89 @@ function crearTarjetas(arrayEventos){
     
 }    
 
-// Buscador--------------------------------------------------------
+// Buscador--------------------------------------------------------------------------------
 let buscador= document.querySelector(".form-control")
 // console.log(buscador);
 
 let formulario= document.querySelector(".formb")
 
-
+let filtrado= filtrarEventos(evento)
 
 console.log(formulario);
 
 
-// function filtrarEventos(arrayEventos){
-    buscador.addEventListener("change", ()=>{ 
-        let eventosFiltrados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+function filtrarEventos(evento){
+    buscador.addEventListener("change", ()=>{eventosBuscados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
         // console.log(buscador.value);
-        // console.log(eventosFiltrados);
+        // conseventos);
 
-        crearTarjetas(eventosFiltrados);
-        // console.log(crearTarjetas(eventosFiltrados));
-        contenedorTarjetas.innerHTML = crearTarjetas(eventosFiltrados);
+        crearTarjetas(eventosBuscados);
+        // console.log(crearTarjetas(eventosBuscados));
+        contenedorTarjetas.innerHTML = crearTarjetas(eventosBuscados);
 
 
     })
 
-
      formulario.addEventListener("submit", (event)=>{event.preventDefault()})
-
+}
 // filtrarEventos(evento)
-// Checkboxes------------------------------------------------------
+// Checkboxes------------------------------------------------------------------------------
 let categorias = document.querySelectorAll('input[type=checkbox]')
 console.log(categorias);
 
-let seleccionados = []
+let eventosSeleccionados = []
 
-for (let categoria of categorias ) {
-   categoria.addEventListener( "click", (event) =>{
-       if(event.target.checked){
-            // seleccionados+=data.events.filter((event) => data.events.category.includes(event.target.value)
-            evento.forEach(evento=>evento.category==event.target.value?(seleccionados.push(evento)):(console.log("no funciona")))
-            //(eventosFiltrados.find(evento=>evento.category==event.target.value))
-            console.log(seleccionados);
-            crearTarjetas(seleccionados);
-            console.log(crearTarjetas(seleccionados));
-            contenedorTarjetas.innerHTML = crearTarjetas(seleccionados);  
-            console.log(categorias);      
+let seleccion= seleccionarCategorias(categorias)
+
+function seleccionarCategorias(categorias) {
+    for (let categoria of categorias ) {
+        categoria.addEventListener( "click", (event) =>{
+            if(event.target.checked){
+                 // seleccionados+=data.events.filter((event) => data.events.category.includes(event.target.value)
+                 evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no funciona")))
+                 //(eventosSeleccionados.find(evento=>evento.category==event.target.value))
+                 console.log(eventosSeleccionados);
+                 crearTarjetas(eventosSeleccionados);
+                 console.log(crearTarjetas(eventosSeleccionados));
+                 contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);  
+                 console.log(categorias);      
+                 
+            }else{
+             contenedorTarjetas.innerHTML =""
+             console.log(categorias);
+             // seleccionados.delete(evento)
+             eventosSeleccionados= []
+             // categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
+             // crearTarjetas(evento)
+         }
             
-       }else{
-        contenedorTarjetas.innerHTML =""
-        console.log(categorias);
-        // seleccionados.delete(evento)
-        seleccionados= []
-        // categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
-        // crearTarjetas(evento)
-    }
-       
-   })
-   
+        })
+        
+     }
 }
+
+
+
+// Condicional para sumar filtrados-------------------------------------------------------
+
+let eventosFiltrados=[]
+
+
+
+
 
 // for (let evento of eventosFiltrados) {
 
 //     if (evento.category==seleccionados.c) {
 //         p
 //     }
+
+//evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no funciona")))
     
 // }
 
 
-console.log(seleccionados)
+console.log(eventosSeleccionados)
 // Estructura filter--------------------------------------
 // const evenNumbers = numbers.filter(number =>number%2=0)
 // console.log(evenNumbers)
