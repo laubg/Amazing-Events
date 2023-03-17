@@ -90,8 +90,9 @@ function seleccionarCategorias(categorias) {
                  
             }else{
                 // evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
+                console.log(eventosSeleccionados);
              contenedorTarjetas.innerHTML =""
-             crearTarjetas(eventosSeleccionados);
+            //  crearTarjetas(eventosSeleccionados);
              console.log(categorias);
              // seleccionados.delete(evento)
             //  eventosSeleccionados= []
