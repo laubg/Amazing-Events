@@ -64,6 +64,8 @@ function filtrarEventos(evento){
      formulario.addEventListener("submit", (event)=>{event.preventDefault()})
 }
 // filtrarEventos(evento)
+
+
 // Checkboxes------------------------------------------------------------------------------
 let categorias = document.querySelectorAll('input[type=checkbox]')
 console.log(categorias);
@@ -77,21 +79,25 @@ function seleccionarCategorias(categorias) {
         categoria.addEventListener( "click", (event) =>{
             if(event.target.checked){
                  // seleccionados+=data.events.filter((event) => data.events.category.includes(event.target.value)
-                 evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no funciona")))
+               evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
+               
                  //(eventosSeleccionados.find(evento=>evento.category==event.target.value))
-                 console.log(eventosSeleccionados);
+                //  console.log(eventosSeleccionados);
                  crearTarjetas(eventosSeleccionados);
-                 console.log(crearTarjetas(eventosSeleccionados));
+                //  console.log(crearTarjetas(eventosSeleccionados));
                  contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);  
-                 console.log(categorias);      
+                //  console.log(categorias);      
                  
             }else{
+                // evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
              contenedorTarjetas.innerHTML =""
+             crearTarjetas(eventosSeleccionados);
              console.log(categorias);
              // seleccionados.delete(evento)
-             eventosSeleccionados= []
+            //  eventosSeleccionados= []
              // categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
              // crearTarjetas(evento)
+
          }
             
         })
@@ -103,11 +109,26 @@ function seleccionarCategorias(categorias) {
 
 // Condicional para sumar filtrados-------------------------------------------------------
 
-let eventosFiltrados=[]
+// let eventosFiltrados=[]
 
+// let resultadoDeFiltrado= filtrar(evento);
 
+// function filtrar(e) {
+//     if(buscador.addEventListener("change",  modifyText, true)& categorias.addEventListener("click",checked, false)){
+//         eventosFiltrados =+ eventosBuscados
+//         console.log(eventosFiltrados)
+//       }
+//     if else(buscador.addEventListener("change",  modifyText, false)& categorias.addEventListener("click",checked, true)){
+//         eventosFiltrados =+ eventosSeleccionados
+//         console.log(eventosFiltrados)
+//     }else{
+//         eventosFiltrados =+ eventosSeleccionados
+//         console.log(eventosFiltrados)}
+// }
 
-
+//el.addEventListener("click", modifyText, false)
+//c?t:f
+//c?t:f?t:f
 
 // for (let evento of eventosFiltrados) {
 
@@ -117,7 +138,7 @@ let eventosFiltrados=[]
 
 //evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no funciona")))
     
-// }
+// access = firstCheck ? "Acceso Denegado" : secondCheck ? "Acceso Denegado" : "Acceso Permitido";
 
 
 console.log(eventosSeleccionados)
