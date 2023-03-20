@@ -406,8 +406,9 @@ table{
 .tabla{
     display: flex;
     justify-content: center;
-    padding-bottom: 45px;
+    padding: 45px 0px;
 }
+
 th{
     background-color: #f6f3f3f0 !important;
 } 
