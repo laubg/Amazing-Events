@@ -94,7 +94,7 @@ function seleccionarCategorias(categorias) {
             }else{
                 // evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
                 console.log(eventosSeleccionados);
-                evento.forEach(event=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento.value)),1):(console.log("no coincide el evento con la categorìa")))
+                evento.forEach(event=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento.values())),1):(console.log("no coincide el evento con la categorìa")))
                 console.log(eventosSeleccionados);
                 // eventosSinQuitar= eventosSeleccionados.filter(evento=>evento != eventosSeleccionados)
 
