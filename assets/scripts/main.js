@@ -72,8 +72,8 @@ console.log(categorias);
 
 let eventosSeleccionados = []
 
-let eventosNoSeleccionados = []
-let eventosSinQuitar=[]
+// let eventosNoSeleccionados = []
+// let eventosSinQuitar=[]
 
 let seleccion= seleccionarCategorias(categorias)
 
@@ -94,9 +94,9 @@ function seleccionarCategorias(categorias) {
             }else{
                 // evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
                 console.log(eventosSeleccionados);
-                evento.forEach(evento=>evento.category==event.target.value?(eventosNoSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
-                console.log(eventosNoSeleccionados);
-                eventosSinQuitar= eventosSeleccionados.filter(evento=>evento != eventosNoSeleccionados)
+                evento.forEach(event=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento.value)),1):(console.log("no coincide el evento con la categorìa")))
+                console.log(eventosSeleccionados);
+                // eventosSinQuitar= eventosSeleccionados.filter(evento=>evento != eventosSeleccionados)
 
             //  contenedorTarjetas.innerHTML =""
             //  crearTarjetas(eventosSeleccionados);

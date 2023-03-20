@@ -71,7 +71,7 @@ h6{
 /* Barra de búsqueda ----------------------------------------------------*/
 .búsqueda{
     padding: 70px;
-    width: 100vw;
+    width: 97vw;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
