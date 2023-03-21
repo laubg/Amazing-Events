@@ -19,6 +19,7 @@ let nuevasTarjetas = crearTarjetas(evento)
 contenedorTarjetas.innerHTML = nuevasTarjetas
    
 function crearTarjetas(arrayEventos){
+
     let tarjetas =""
     
     arrayEventos.forEach(evento => {
@@ -47,36 +48,55 @@ let buscador= document.querySelector(".form-control")
 
 let formulario= document.querySelector(".formb")
 
-let filtrado= filtrarEventos(evento,eventosSeleccionados)
+let filtroBuscados= filtrarEventos(evento,eventosSeleccionados)
 
 console.log(formulario);
 
-
+//éste no estaría funcionando (la funcionalidad compartida, no toma eventosSeleccionados)
 function filtrarEventos(evento,eventosSeleccionados){
-    buscador.addEventListener("change", ()=>{
+    buscador.addEventListener("keyup", ()=>{
+
+
+    
 
     if (eventosSeleccionados.length>0) {
         eventosBuscados = eventosSeleccionados.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()) )
         console.log(eventosSeleccionados.length)
         console.log("funciona con eventos seleccionados en checks");
+        console.log(eventosBuscados);
         
 
     } else {
         eventosBuscados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
         console.log(eventosSeleccionados.length)
+        console.log(eventosBuscados);
     }
    
         // console.log(buscador.value);
         // conseventos);
+        if(eventosBuscados.length == 0){
+            contenedorTarjetas.innerHTML = `<h4 class="d-flex flex-row justify-content-center alig-items-center">No existen eventos relacionados a su búsqueda</h4> <img src="./assets/img/a27d24_9c9a8ce8401f4dc1b33acc16118f2e10_mv2.gif" style="width:260px;"></img>`
+            return
+        }
+        if (eventosBuscados.length==0) {
+            contenedorTarjetas.innerHTML = crearTarjetas(evento)
+            return evento  
+            }else{
+                crearTarjetas(eventosBuscados);
+                // console.log(crearTarjetas(eventosBuscados));
+                contenedorTarjetas.innerHTML = crearTarjetas(eventosBuscados);
+                // varIntermediaria=varIntermediaria.push(eventosBuscados)
+                console.log(eventosBuscados)
+                console.log(eventosBuscados.length);
+                // console.log(varIntermediaria)
+                // filtrar(varIntermediaria)
+                seleccionarCategorias(categorias,eventosBuscados)
+                return eventosBuscados
+            }
 
-        crearTarjetas(eventosBuscados);
-        console.log(crearTarjetas(eventosBuscados));
-        contenedorTarjetas.innerHTML = crearTarjetas(eventosBuscados);
-        // varIntermediaria=varIntermediaria.push(eventosBuscados)
-        console.log(eventosBuscados)
-        // console.log(varIntermediaria)
-        // filtrar(varIntermediaria)
-        return eventosBuscados
+
+
+
 
 
     })
@@ -97,68 +117,45 @@ console.log(categorias);
 
 let seleccion= seleccionarCategorias(categorias,eventosBuscados)
 
+
 function seleccionarCategorias(categorias, eventosBuscados) {
     for (let categoria of categorias ) {
         categoria.addEventListener( "click", (event) =>{
-            if(event.target.checked){
+
+            console.log(eventosBuscados)
+            if(event.target.checked & eventosBuscados.length>0){
                
-               console.log(eventosBuscados.length);
-
-               if (eventosBuscados.length>0) {
-                eventosBuscados.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventosbuscados")))
+                console.log("entré");              
+                eventosSeleccionados=eventosBuscados.filter(evento=>evento.category==event.target.value)
+                contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
                 
-               } else {
-                evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventos")))
+            } 
+                else if(event.target.checked & eventosBuscados.length==0){
+                    evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventos")))      
+                    contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
                 
-               }
-               
-
-                //  console.log(eventosSeleccionados);
-                 
-                //  console.log(crearTarjetas(eventosSeleccionados));
-                 contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
-                // varIntermediaria=varIntermediaria.push(eventosSeleccionados)
-                // console.log(varIntermediaria);
-                // filtrar(varIntermediaria)
-                //  console.log(categorias);    
-                // console.log(eventosSeleccionados); 
-                // return eventosSeleccionados  
-                
-                 
-                 
-            }else{
-                // evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
-                console.log(eventosSeleccionados);
-                evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento),1)):(console.log("no coincide el evento con la categorìa")))
-                console.log(eventosSeleccionados);
-
-                if (eventosSeleccionados.length==0) {
-                   contenedorTarjetas.innerHTML = crearTarjetas(evento)
-                   return evento  
+            
                 }else{
+ 
+                    console.log(eventosSeleccionados);
+                    evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento),1)):(console.log("no coincide el evento con la categorìa")))
+                    console.log(eventosSeleccionados);
+
+                    if (eventosSeleccionados.length==0) {
+                    contenedorTarjetas.innerHTML = crearTarjetas(evento)
+                    return evento  
+                    }else{
                     contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados)
                     // return eventosSeleccionados  
-                }
-                
+                    }
+                contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
                
-                // eventosSinQuitar= eventosSeleccionados.filter(evento=>evento != eventosSeleccionados)
 
-            //  contenedorTarjetas.innerHTML =""
-            //  crearTarjetas(eventosSeleccionados);
-            //  console.log(eventosSeleccionados);
-             // seleccionados.delete(evento)
-            //  eventosSeleccionados= []
-             // categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
-             // crearTarjetas(evento)
 
-         }
-            
-        })
-        
+         }            
+        })        
      }
 }
-
-
 
 // Condicional para sumar filtrados----------------------------------------
 
@@ -181,13 +178,14 @@ function seleccionarCategorias(categorias, eventosBuscados) {
 //     // let seleccion= seleccionarCategorias(categorias)
     
 // }
-function filtrar(varIntermediaria) {
-    let eventosFiltrados=[]
+// function filtrar(varIntermediaria) {
+//     let eventosFiltrados=[]
 
-        eventosFiltrados= new Set(varIntermediaria)
-        console.log(varIntermediaria);
-        console.log(eventosFiltrados);
-}
+//         eventosFiltrados= new Set(varIntermediaria)
+//         console.log(varIntermediaria);
+//         console.log(eventosFiltrados);
+// }
+
 // function filtrar(eventosBuscados, eventosSeleccionados) {
 
 //     let eventosFiltrados=[]
