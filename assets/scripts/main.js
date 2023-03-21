@@ -128,6 +128,12 @@ function seleccionarCategorias(categorias, eventosBuscados) {
                 console.log("entré");              
                 eventosSeleccionados=eventosBuscados.filter(evento=>evento.category==event.target.value)
                 contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
+                if(eventosSeleccionados.length == 0){
+                    contenedorTarjetas.innerHTML = `<h4 class="d-flex flex-row justify-content-center alig-items-center">No existen eventos relacionados a su búsqueda</h4> <img src="./assets/img/a27d24_9c9a8ce8401f4dc1b33acc16118f2e10_mv2.gif" style="width:260px;"></img>`
+                    return
+                }   else{
+                    contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
+                }
                 
             } 
                 else if(event.target.checked & eventosBuscados.length==0){
@@ -142,14 +148,21 @@ function seleccionarCategorias(categorias, eventosBuscados) {
                     console.log(eventosSeleccionados);
 
                     if (eventosSeleccionados.length==0) {
+                    
                     contenedorTarjetas.innerHTML = crearTarjetas(evento)
-                    return evento  
-                    }else{
-                    contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados)
+                    
+                    // INTENTO DE QUE SE MUESTREN LOS RESULTADOS DE LA BÚSQUEDA AUNQUE NO HAYA RESULTADOS DE LOS CHEKS (EN LUGAR DE VOLVER A 0 DIRECTAMENTE
+                    //)}else if(eventosBuscados.length>0){
+                    //     console.log("entré al filtro conjunto con buscados");      
+                    //     console.log(eventosBuscados);
+                    //     eventosSeleccionados=eventosBuscados
+                    //     contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados)
                     // return eventosSeleccionados  
+                    }else{
+                        contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados)
                     }
-                contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
-               
+                
+
 
 
          }            
