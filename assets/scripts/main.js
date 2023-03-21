@@ -4,6 +4,9 @@ const evento= data.events;
 
 let eventosBuscados=[]
 
+let varIntermediaria=[]
+let eventosSeleccionados = []
+
 
 // console.log(evento);
 // console.log(data.events);
@@ -44,19 +47,36 @@ let buscador= document.querySelector(".form-control")
 
 let formulario= document.querySelector(".formb")
 
-let filtrado= filtrarEventos(evento)
+let filtrado= filtrarEventos(evento,eventosSeleccionados)
 
 console.log(formulario);
 
 
-function filtrarEventos(evento){
-    buscador.addEventListener("change", ()=>{eventosBuscados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+function filtrarEventos(evento,eventosSeleccionados){
+    buscador.addEventListener("change", ()=>{
+
+    if (eventosSeleccionados.length>0) {
+        eventosBuscados = eventosSeleccionados.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()) )
+        console.log(eventosSeleccionados.length)
+        console.log("funciona con eventos seleccionados en checks");
+        
+
+    } else {
+        eventosBuscados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+        console.log(eventosSeleccionados.length)
+    }
+   
         // console.log(buscador.value);
         // conseventos);
 
         crearTarjetas(eventosBuscados);
-        // console.log(crearTarjetas(eventosBuscados));
+        console.log(crearTarjetas(eventosBuscados));
         contenedorTarjetas.innerHTML = crearTarjetas(eventosBuscados);
+        // varIntermediaria=varIntermediaria.push(eventosBuscados)
+        console.log(eventosBuscados)
+        // console.log(varIntermediaria)
+        // filtrar(varIntermediaria)
+        return eventosBuscados
 
 
     })
@@ -70,37 +90,62 @@ function filtrarEventos(evento){
 let categorias = document.querySelectorAll('input[type=checkbox]')
 console.log(categorias);
 
-let eventosSeleccionados = []
+
 
 // let eventosNoSeleccionados = []
 // let eventosSinQuitar=[]
 
-let seleccion= seleccionarCategorias(categorias)
+let seleccion= seleccionarCategorias(categorias,eventosBuscados)
 
-function seleccionarCategorias(categorias) {
+function seleccionarCategorias(categorias, eventosBuscados) {
     for (let categoria of categorias ) {
         categoria.addEventListener( "click", (event) =>{
             if(event.target.checked){
-                 // seleccionados+=data.events.filter((event) => data.events.category.includes(event.target.value)
-               evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
                
-                 //(eventosSeleccionados.find(evento=>evento.category==event.target.value))
+               console.log(eventosBuscados.length);
+
+               if (eventosBuscados.length>0) {
+                eventosBuscados.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventosbuscados")))
+                
+               } else {
+                evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventos")))
+                
+               }
+               
+
                 //  console.log(eventosSeleccionados);
-                 crearTarjetas(eventosSeleccionados);
+                 
                 //  console.log(crearTarjetas(eventosSeleccionados));
-                 contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);  
-                //  console.log(categorias);      
+                 contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
+                // varIntermediaria=varIntermediaria.push(eventosSeleccionados)
+                // console.log(varIntermediaria);
+                // filtrar(varIntermediaria)
+                //  console.log(categorias);    
+                // console.log(eventosSeleccionados); 
+                // return eventosSeleccionados  
+                
+                 
                  
             }else{
                 // evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("no coincide el evento con la categorìa")))
                 console.log(eventosSeleccionados);
-                evento.forEach(event=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento.values())),1):(console.log("no coincide el evento con la categorìa")))
+                evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento),1)):(console.log("no coincide el evento con la categorìa")))
                 console.log(eventosSeleccionados);
+
+                if (eventosSeleccionados.length==0) {
+                   contenedorTarjetas.innerHTML = crearTarjetas(evento)
+                   return evento  
+                }else{
+                    contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados)
+                    // return eventosSeleccionados  
+                }
+                
+               
                 // eventosSinQuitar= eventosSeleccionados.filter(evento=>evento != eventosSeleccionados)
 
             //  contenedorTarjetas.innerHTML =""
             //  crearTarjetas(eventosSeleccionados);
-             console.log(eventosSinQuitar);
+            //  console.log(eventosSeleccionados);
              // seleccionados.delete(evento)
             //  eventosSeleccionados= []
              // categorias.unchecked(crearTarjetas(evento));(console.log("no es undefined"))
@@ -115,25 +160,48 @@ function seleccionarCategorias(categorias) {
 
 
 
-// Condicional para sumar filtrados-------------------------------------------------------
+// Condicional para sumar filtrados----------------------------------------
 
+
+
+// let resultadoDeFiltrado= filtrar(varIntermediaria);
+
+// let filtradoFinal = filtradoConjunto(evento)
+
+// function filtradoConjunto(evento) {
 // let eventosFiltrados=[]
+// eventosFiltrados+= eventosSeleccionados+ eventosBuscados
+// console.log(eventosFiltrados);
 
-// let resultadoDeFiltrado= filtrar(evento);
+//     // let filtro1 = filtrarEventos(evento)
+    
+//     // crearTarjetas(seleccion)
 
-// function filtrar(e) {
-//     if(buscador.addEventListener("change",  modifyText, true)& categorias.addEventListener("click",checked, false)){
+//     // console.log(crearTarjetas(seleccion));
+//     // let seleccion= seleccionarCategorias(categorias)
+    
+// }
+function filtrar(varIntermediaria) {
+    let eventosFiltrados=[]
+
+        eventosFiltrados= new Set(varIntermediaria)
+        console.log(varIntermediaria);
+        console.log(eventosFiltrados);
+}
+// function filtrar(eventosBuscados, eventosSeleccionados) {
+
+//     let eventosFiltrados=[]
+//     if(buscador.addEventListener("change", true)& categorias.addEventListener("click",checked, false)){
 //         eventosFiltrados =+ eventosBuscados
 //         console.log(eventosFiltrados)
 //       }
-//     if else(buscador.addEventListener("change",  modifyText, false)& categorias.addEventListener("click",checked, true)){
+//     else if(buscador.addEventListener("change", false)& categorias.addEventListener("click",checked, true)){
 //         eventosFiltrados =+ eventosSeleccionados
 //         console.log(eventosFiltrados)
 //     }else{
 //         eventosFiltrados =+ eventosSeleccionados
 //         console.log(eventosFiltrados)}
 // }
-
 //el.addEventListener("click", modifyText, false)
 //c?t:f
 //c?t:f?t:f
@@ -148,8 +216,36 @@ function seleccionarCategorias(categorias) {
     
 // access = firstCheck ? "Acceso Denegado" : secondCheck ? "Acceso Denegado" : "Acceso Permitido";
 
+// VER EJEMPLO FILTRO
+// function superFiltro(){
+//     let primerFiltro = filtrarPorTexto(people,input.value)
+//     let segundoFiltro = filtrarPorPais(primerFiltro)
+//     pintarPersonas(segundoFiltro)
+// }
 
-console.log(eventosSeleccionados)
+// pintarPersonas(people)
+// crearCheckBoxes(people)
+
+// function filtrarPorTexto(array,texto){
+//     let arrayFiltrado = array.filter(elemento => elemento.name.toLowerCase().includes(texto.toLowerCase()))
+//     return arrayFiltrado
+// }
+
+// function filtrarPorPais(array){
+//     let checkboxes = document.querySelectorAll("input[type='checkbox']")
+//     console.log(checkboxes);
+//     let arrayChecks = Array.from(checkboxes)
+//     let arrayChecksChecked = arrayChecks.filter(check => check.checked)
+//     console.log(arrayChecksChecked);
+//     let arrayChecksCheckedValues = arrayChecksChecked.map(checkChecked => checkChecked.value)
+//     console.log(arrayChecksCheckedValues);
+//     let arrayFiltrado = array.filter(elemento => arrayChecksCheckedValues.includes(elemento.country))
+//     console.log(arrayFiltrado);
+//     if(arrayChecksChecked.length > 0){
+//         return arrayFiltrado
+//     }
+//     return array
+// }
 // Estructura filter--------------------------------------
 // const evenNumbers = numbers.filter(number =>number%2=0)
 // console.log(evenNumbers)
