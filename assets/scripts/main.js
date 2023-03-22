@@ -1,11 +1,30 @@
 const contenedorTarjetas= document.querySelector('.cards')
 
-const evento= data.events;
+const eventos= [];
 
 let eventosBuscados=[]
 
 let varIntermediaria=[]
 let eventosSeleccionados = []
+
+let urlApi= "../assets/scripts/data.json"
+
+console.log(fetch("https://mindhub-xj03.onrender.com/api/amazing"))
+
+fetch(urlApi)
+.then(response => response.json())
+.then(datosApiEventos => {
+    // throw new Error("ocurrió un error al traer los datos");
+    console.log(datosApiEventos);
+    eventos = datosApiEventos.events
+    console.log(datosApiEventos.events[5]);
+    console.log(datosApiEventos.events[5].name);
+})
+.catch(error =>{
+    console.log(error);
+})
+
+
 
 
 // console.log(evento);
@@ -14,7 +33,7 @@ let eventosSeleccionados = []
 
 // Creación de tarjetas----------------------------------------------------------------
 
-let nuevasTarjetas = crearTarjetas(evento)
+let nuevasTarjetas = crearTarjetas(eventos)
                
 contenedorTarjetas.innerHTML = nuevasTarjetas
    
@@ -48,12 +67,12 @@ let buscador= document.querySelector(".form-control")
 
 let formulario= document.querySelector(".formb")
 
-let filtroBuscados= filtrarEventos(evento,eventosSeleccionados)
+let filtroBuscados= filtrarEventos(eventos,eventosSeleccionados)
 
 console.log(formulario);
 
 //éste no estaría funcionando (la funcionalidad compartida, no toma eventosSeleccionados)
-function filtrarEventos(evento,eventosSeleccionados){
+function filtrarEventos(eventos,eventosSeleccionados){
     buscador.addEventListener("keyup", ()=>{
 
 
@@ -79,8 +98,8 @@ function filtrarEventos(evento,eventosSeleccionados){
             return
         }
         if (eventosBuscados.length==0) {
-            contenedorTarjetas.innerHTML = crearTarjetas(evento)
-            return evento  
+            contenedorTarjetas.innerHTML = crearTarjetas(eventos)
+            return eventos  
             }else{
                 crearTarjetas(eventosBuscados);
                 // console.log(crearTarjetas(eventosBuscados));
@@ -137,19 +156,19 @@ function seleccionarCategorias(categorias, eventosBuscados) {
                 
             } 
                 else if(event.target.checked & eventosBuscados.length==0){
-                    evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventos")))      
+                    eventos.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventos")))      
                     contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados);
                 
             
                 }else{
  
                     console.log(eventosSeleccionados);
-                    evento.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento),1)):(console.log("no coincide el evento con la categorìa")))
+                    eventos.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento),1)):(console.log("no coincide el evento con la categorìa")))
                     console.log(eventosSeleccionados);
 
                     if (eventosSeleccionados.length==0) {
                     
-                    contenedorTarjetas.innerHTML = crearTarjetas(evento)
+                    contenedorTarjetas.innerHTML = crearTarjetas(eventos)
                     
                     // INTENTO DE QUE SE MUESTREN LOS RESULTADOS DE LA BÚSQUEDA AUNQUE NO HAYA RESULTADOS DE LOS CHEKS (EN LUGAR DE VOLVER A 0 DIRECTAMENTE
                     //)}else if(eventosBuscados.length>0){
