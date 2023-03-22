@@ -413,8 +413,12 @@ th{
     background-color: #f6f3f3f0 !important;
 } 
 td{
-    color:#6ddaf3 !important;
+    color:#6ddaf3 ;
 }
+/* td >.subtitulo{
+    color: #d90368 !important;
+} */
+
 
 /* Formulario ---------------------------------------------------------------*/
 .formulario{
