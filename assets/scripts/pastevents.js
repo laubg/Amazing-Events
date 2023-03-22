@@ -1,54 +1,64 @@
+// Contenedor tarjetas--------------------------------------------------------------------------------
 const contenedorTarjetas= document.querySelector('.cards')
-// / console.log(data.currentDate);/
-
-const evento= data.events;
-
-
-
-
-// Buscador----------------------------------------------------------------------
+// Contenedor Buscador--------------------------------------------------------------------------------
 let buscador= document.querySelector(".form-control")
 // console.log(buscador);
-
+// Contenedor Checkboxes------------------------------------------------------------------------------
+let categorias = document.querySelectorAll('input[type=checkbox]')
+console.log(categorias);
+// Contenedor Formulario------------------------------------------------------------------------------
 let formulario= document.querySelector(".formb")
-
-
-
 console.log(formulario);
 
+// APIS------------------------------------------------------------------------------
+let urlApi= "../assets/scripts/data.json"
+// let urlApi= "https://mindhub-xj03.onrender.com/api/amazing"
 
-// function filtrarEventos(arrayEventos){
-    buscador.addEventListener("change", ()=>{ 
-        let eventosFiltrados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
-        console.log(buscador.value);
-        console.log(eventosFiltrados);
+//Chequear funcionamiento fetch---------------------------------------------
+// console.log(fetch("https://mindhub-xj03.onrender.com/api/amazing"))
 
-        crearTarjetas(eventosFiltrados);
-        console.log(crearTarjetas(eventosFiltrados));
-        contenedorTarjetas.innerHTML = crearTarjetas(eventosFiltrados);
+// VARIABLES------------------------------------------------------------------------------
+let eventos= [];
+let eventosBuscados=[]
+let eventosSeleccionados = []
 
 
+
+function traerDatos() {
+    fetch(urlApi)
+    .then(response => response.json())
+    .then(datosApiEventos => {
+        // throw new Error("ocurrió un error al traer los datos");
+        console.log(datosApiEventos);
+        eventos = datosApiEventos.events
+        let fechaActual= datosApiEventos.currentDate
+        console.log(fechaActual)
+        crearTarjetas(eventos,fechaActual) 
+        // console.log(crearTarjetas(eventos,fechaActual));
+        filtrarEventos(eventos,eventosSeleccionados,fechaActual)
+        seleccionarCategorias(categorias,eventosBuscados,fechaActual)
+        // console.log(crearTarjetas(eventos));
     })
+    .catch(error =>{
+        console.log(error);
+    })  
+}
 
-
-     formulario.addEventListener("submit", (event)=>{event.preventDefault()})
-
-
-// Creación de Cards---------------------
-let nuevasTarjetas = crearTarjetas(evento)
-
-contenedorTarjetas.innerHTML = nuevasTarjetas
+traerDatos()
 
 
 
-function crearTarjetas(arrayEventos){
+
+// Creación de tarjetas----------------------------------------------------------------            
+
+   
+function crearTarjetas(arrayEventos,fechaActual){
+
     let tarjetas =""
-    let fechaactual= data.currentDate
 
-
-    arrayEventos.forEach(evento => {  
+    arrayEventos.forEach(evento => {
         
-        if (evento.date<fechaactual) {
+        if (evento.date<fechaActual) {
             tarjetas += `<div class="card col-sm-6 col-md-4 " >        
                     <img src= ${evento.image}  class="card-img-top" alt="cinema">    
                     <div class="card-body">  
@@ -60,8 +70,135 @@ function crearTarjetas(arrayEventos){
                         </div>                   
                     </div>                    
                 </div>               `   }   
-    });
+            }) ;
     
-    return tarjetas
+    return contenedorTarjetas.innerHTML = tarjetas
+
+
+
     
+}    
+
+function filtrarEventos(eventos,eventosSeleccionados,fechaActual){
+    buscador.addEventListener("keyup", ()=>{
+    
+        console.log(eventosSeleccionados.length)
+    if (eventosSeleccionados.length>0) {
+        eventosBuscados = eventosSeleccionados.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()) )
+        console.log(eventosSeleccionados.length)
+        console.log("funciona con eventos seleccionados en checks");
+        console.log(eventosBuscados);
+        
+
+    } else {
+        eventosBuscados = eventos.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+        console.log(eventosBuscados.length)
+        console.log(eventosBuscados);
+    }
+   
+        // console.log(buscador.value);
+        // conseventos);
+        if(eventosBuscados.length == 0){
+            contenedorTarjetas.innerHTML = `<h4 class="d-flex flex-row justify-content-center alig-items-center">No existen eventos relacionados a su búsqueda</h4> <img src="./assets/img/a27d24_9c9a8ce8401f4dc1b33acc16118f2e10_mv2.gif" style="width:260px;"></img>`
+            return
+        }
+        if (eventosBuscados.length==0) {
+            contenedorTarjetas.innerHTML = crearTarjetas(eventos,fechaActual)
+            return eventos  
+            }else{
+                crearTarjetas(eventosBuscados,fechaActual);
+                console.log(crearTarjetas(eventosBuscados));
+                contenedorTarjetas.innerHTML = crearTarjetas(eventosBuscados,fechaActual);
+                // varIntermediaria=varIntermediaria.push(eventosBuscados)
+                console.log(eventosBuscados)
+                console.log(eventosBuscados.length);
+                // console.log(varIntermediaria)
+                // filtrar(varIntermediaria)
+                seleccionarCategorias(categorias,eventosBuscados,fechaActual)
+                return eventosBuscados
+            }
+    })
+
+     formulario.addEventListener("submit", (event)=>{event.preventDefault()})
 }
+
+
+function seleccionarCategorias(categorias,eventosBuscados,fechaActual) {
+    for (let categoria of categorias ) {
+        categoria.addEventListener( "click", (event) =>{
+            console.log(fechaActual);
+            console.log(eventosBuscados)
+            if(event.target.checked & eventosBuscados.length>0){
+               
+                console.log("entré");              
+                eventosSeleccionados=eventosBuscados.filter(evento=>evento.category==event.target.value)
+                console.log(eventosSeleccionados)
+                console.log(fechaActual);
+                contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados,fechaActual);
+                console.log(crearTarjetas(eventosSeleccionados,fechaActual))
+                if(eventosSeleccionados.length == 0){
+                    contenedorTarjetas.innerHTML = `<h4 class="d-flex flex-row justify-content-center alig-items-center">No existen eventos relacionados a su búsqueda</h4> <img src="./assets/img/a27d24_9c9a8ce8401f4dc1b33acc16118f2e10_mv2.gif" style="width:260px;"></img>`
+                    return
+                }   else{
+                    contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados,fechaActual);
+                }
+                
+            } 
+                else if(event.target.checked & eventosBuscados.length==0){
+                    eventos.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.push(evento)):(console.log("usa eventos")))      
+                    contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados,fechaActual);
+                
+            
+                }else{
+ 
+                    console.log(eventosSeleccionados);
+                    eventos.forEach(evento=>evento.category==event.target.value?(eventosSeleccionados.splice(eventosSeleccionados.indexOf(evento),1)):(console.log("no coincide el evento con la categorìa")))
+                    console.log(eventosSeleccionados);
+
+                    if (eventosSeleccionados.length==0) {
+                    
+                    contenedorTarjetas.innerHTML = crearTarjetas(eventos,fechaActual)
+                    
+                    // INTENTO DE QUE SE MUESTREN LOS RESULTADOS DE LA BÚSQUEDA AUNQUE NO HAYA RESULTADOS DE LOS CHEKS (EN LUGAR DE VOLVER A 0 DIRECTAMENTE
+                    //)}else if(eventosBuscados.length>0){
+                    //     console.log("entré al filtro conjunto con buscados");      
+                    //     console.log(eventosBuscados);
+                    //     eventosSeleccionados=eventosBuscados
+                    //     contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados)
+                    // return eventosSeleccionados  
+                    }else{
+                        contenedorTarjetas.innerHTML = crearTarjetas(eventosSeleccionados,fechaActual)
+                    }
+                
+
+
+
+         }            
+        })        
+     }
+}
+
+// function crearTarjetas(arrayEventos){
+//     let tarjetas =""
+//     let fechaactual= data.currentDate
+
+
+//     arrayEventos.forEach(evento => {  
+        
+//         if (evento.date<fechaactual) {
+//             tarjetas += `<div class="card col-sm-6 col-md-4 " >        
+//                     <img src= ${evento.image}  class="card-img-top" alt="cinema">    
+//                     <div class="card-body">  
+//                         <h5 class="card-title">${evento.name}</h5>
+//                         <p class="card-text">${evento.description}</p>                         
+//                         <div class="row card-row">                               
+//                             <div class="precio col-md-6 col-sm-12"> <h6>   $${evento.price}</h6></div>                                
+//                             <div class="botón col-md-6 col-sm-12"><a href="/details.html?id=${evento._id}" class="btn btn-primary">Details</a></div>                        
+//                         </div>                   
+//                     </div>                    
+//                 </div>               `   }   
+//     });
+    
+//     return tarjetas
+    
+// }

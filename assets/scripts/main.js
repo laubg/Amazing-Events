@@ -25,14 +25,6 @@ let eventosSeleccionados = []
 
 
 
-
-
-
-
-
-
-
-
 function traerDatos() {
     fetch(urlApi)
     .then(response => response.json())
@@ -57,10 +49,6 @@ traerDatos()
 
 
 
-
-// console.log(evento);
-// console.log(data.events);
-// let arrayModificado= 
 
 // Creación de tarjetas----------------------------------------------------------------            
 
@@ -97,7 +85,7 @@ function crearTarjetas(arrayEventos){
 
 
 
-//éste no estaría funcionando (la funcionalidad compartida, no toma eventosSeleccionados)
+
 function filtrarEventos(eventos,eventosSeleccionados){
     buscador.addEventListener("keyup", ()=>{
     
