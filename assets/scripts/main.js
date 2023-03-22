@@ -1,28 +1,59 @@
+
+// Contenedor tarjetas--------------------------------------------------------------------------------
 const contenedorTarjetas= document.querySelector('.cards')
+// Contenedor Buscador--------------------------------------------------------------------------------
+let buscador= document.querySelector(".form-control")
+// console.log(buscador);
+// Contenedor Checkboxes------------------------------------------------------------------------------
+let categorias = document.querySelectorAll('input[type=checkbox]')
+console.log(categorias);
+// Contenedor Formulario------------------------------------------------------------------------------
+let formulario= document.querySelector(".formb")
+console.log(formulario);
 
-const eventos= [];
-
-let eventosBuscados=[]
-
-let varIntermediaria=[]
-let eventosSeleccionados = []
-
+// APIS------------------------------------------------------------------------------
 let urlApi= "../assets/scripts/data.json"
+// let urlApi= "https://mindhub-xj03.onrender.com/api/amazing"
 
-console.log(fetch("https://mindhub-xj03.onrender.com/api/amazing"))
+//Chequear funcionamiento fetch---------------------------------------------
+// console.log(fetch("https://mindhub-xj03.onrender.com/api/amazing"))
 
-fetch(urlApi)
-.then(response => response.json())
-.then(datosApiEventos => {
-    // throw new Error("ocurrió un error al traer los datos");
-    console.log(datosApiEventos);
-    eventos = datosApiEventos.events
-    console.log(datosApiEventos.events[5]);
-    console.log(datosApiEventos.events[5].name);
-})
-.catch(error =>{
-    console.log(error);
-})
+// VARIABLES------------------------------------------------------------------------------
+let eventos= [];
+
+
+
+
+
+
+
+
+
+
+
+
+function traerDatos() {
+    fetch(urlApi)
+    .then(response => response.json())
+    .then(datosApiEventos => {
+        // throw new Error("ocurrió un error al traer los datos");
+        console.log(datosApiEventos);
+        eventos = datosApiEventos.events
+        let eventosBuscados=[]
+        let eventosSeleccionados = []
+        console.log(eventos)
+        crearTarjetas(eventos) 
+        console.log(crearTarjetas(eventos));
+        filtrarEventos(eventos,eventosSeleccionados)
+        seleccionarCategorias(categorias,eventosBuscados)
+        // console.log(crearTarjetas(eventos));
+    })
+    .catch(error =>{
+        console.log(error);
+    })  
+}
+
+traerDatos()
 
 
 
@@ -31,11 +62,8 @@ fetch(urlApi)
 // console.log(data.events);
 // let arrayModificado= 
 
-// Creación de tarjetas----------------------------------------------------------------
+// Creación de tarjetas----------------------------------------------------------------            
 
-let nuevasTarjetas = crearTarjetas(eventos)
-               
-contenedorTarjetas.innerHTML = nuevasTarjetas
    
 function crearTarjetas(arrayEventos){
 
@@ -56,26 +84,22 @@ function crearTarjetas(arrayEventos){
     </div>               `
     });
     
-    return tarjetas
+    return contenedorTarjetas.innerHTML = tarjetas
+
+
 
     
 }    
 
-// Buscador--------------------------------------------------------------------------------
-let buscador= document.querySelector(".form-control")
-// console.log(buscador);
 
-let formulario= document.querySelector(".formb")
 
-let filtroBuscados= filtrarEventos(eventos,eventosSeleccionados)
+// let filtroBuscados= filtrarEventos(eventos,eventosSeleccionados)
 
-console.log(formulario);
+
 
 //éste no estaría funcionando (la funcionalidad compartida, no toma eventosSeleccionados)
 function filtrarEventos(eventos,eventosSeleccionados){
     buscador.addEventListener("keyup", ()=>{
-
-
     
 
     if (eventosSeleccionados.length>0) {
@@ -86,7 +110,7 @@ function filtrarEventos(eventos,eventosSeleccionados){
         
 
     } else {
-        eventosBuscados = evento.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
+        eventosBuscados = eventos.filter((evento) => evento.name.toLowerCase().includes(buscador.value.toLowerCase()))
         console.log(eventosSeleccionados.length)
         console.log(eventosBuscados);
     }
@@ -102,7 +126,7 @@ function filtrarEventos(eventos,eventosSeleccionados){
             return eventos  
             }else{
                 crearTarjetas(eventosBuscados);
-                // console.log(crearTarjetas(eventosBuscados));
+                console.log(crearTarjetas(eventosBuscados));
                 contenedorTarjetas.innerHTML = crearTarjetas(eventosBuscados);
                 // varIntermediaria=varIntermediaria.push(eventosBuscados)
                 console.log(eventosBuscados)
@@ -125,16 +149,14 @@ function filtrarEventos(eventos,eventosSeleccionados){
 // filtrarEventos(evento)
 
 
-// Checkboxes------------------------------------------------------------------------------
-let categorias = document.querySelectorAll('input[type=checkbox]')
-console.log(categorias);
+
 
 
 
 // let eventosNoSeleccionados = []
 // let eventosSinQuitar=[]
 
-let seleccion= seleccionarCategorias(categorias,eventosBuscados)
+// let seleccion= seleccionarCategorias(categorias,eventosBuscados)
 
 
 function seleccionarCategorias(categorias, eventosBuscados) {
@@ -188,6 +210,8 @@ function seleccionarCategorias(categorias, eventosBuscados) {
         })        
      }
 }
+
+
 
 // Condicional para sumar filtrados----------------------------------------
 
