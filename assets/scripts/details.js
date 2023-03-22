@@ -1,22 +1,55 @@
+// APIS------------------------------------------------------------------------------
+let urlApi= "../assets/scripts/data.json"
+// let urlApi= "https://mindhub-xj03.onrender.com/api/amazing"
+
+//Chequear funcionamiento fetch---------------------------------------------
+// console.log(fetch("https://mindhub-xj03.onrender.com/api/amazing"))
+
+
 /* Obtenenos los datos de los parametros de la URL */
 let parametros = new URLSearchParams(document.location.search)
 let id = parametros.get("id")
+let evento = {}
 console.log(parametros);
 console.log(id);
 
+function traerDatos() {
+    fetch(urlApi)
+    .then(response => response.json())
+    .then(datosApiEventos => {
+        // throw new Error("ocurrió un error al traer los datos");
+        console.log(datosApiEventos);
+        eventos = datosApiEventos.events
+        let evento = eventos.find(evento => evento._id == id);
 
+        console.log(eventos)
+        // filtrarEventos(eventos) 
+        // console.log(crearTarjetas(eventos));
+        crearCardDetail(evento)
+        // console.log(crearTarjetas(eventos));
+    })
+    .catch(error =>{
+        console.log(error);
+    })  
+}
+
+traerDatos()
 /* Buscar dato por id */
-let evento = data.events.find(evento => evento._id == id);
+
+function filtrarEventos(eventos){
+let evento = eventos.find(evento => evento._id == id);
  console.log(evento);
 /* Renderizar evento */
 // const container = document.getElementsByClassName("imprimir");
 // console.log(container);
+}
 
+function crearCardDetail(evento){
 let templateHtml = "";
 
 templateHtml = `<section class="card col-10"> 
     
-                    <div class="col-5 "  >
+                    <div class="col-5 row justify-content-center"  >
                        <img src="${evento.image}" class="img-fluid">
                     </div> 
                     <div class="card-body col-4 ">
@@ -40,8 +73,8 @@ templateHtml = `<section class="card col-10">
     `
 console.log(templateHtml);
 
-document.querySelector(".imprimir").innerHTML= templateHtml;
-
+return document.querySelector(".imprimir").innerHTML= templateHtml;
+}
 // OTRA FORMA--------------------------------------------------
 //     function mostrarEvento(container,evento){
 //         container.innerHTML=`   <div class="card col-9 " style="background-color: "black"" >
