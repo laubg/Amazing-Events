@@ -20,7 +20,8 @@ let urlApi= "../assets/scripts/data.json"
 
 // VARIABLES------------------------------------------------------------------------------
 let eventos= [];
-
+let eventosBuscados=[]
+let eventosSeleccionados = []
 
 
 
@@ -39,8 +40,7 @@ function traerDatos() {
         // throw new Error("ocurrió un error al traer los datos");
         console.log(datosApiEventos);
         eventos = datosApiEventos.events
-        let eventosBuscados=[]
-        let eventosSeleccionados = []
+
         console.log(eventos)
         crearTarjetas(eventos) 
         console.log(crearTarjetas(eventos));
